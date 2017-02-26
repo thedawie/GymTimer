@@ -10,14 +10,16 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+  //event model
   public event = {
     timeStarts: '00:01:00',
     countDown: '00:00',
-    interval: 1
+    interval: 1,
+    restTime: '00:01:00',
+    repetitions: 1
   }
 
-  
-
+  //start functionality
   start(event) {
     var fiveMinutes = 60 * 5
 
@@ -26,26 +28,21 @@ export class HomePage {
     var mininsec = min * 60;
     var total = parseInt(mininsec.toString()) + parseInt(sec);
 
-    this.startTimer(total, event)
+    this.startTimer(total, event);
   }
 
-
+  //reset functionaity
   reset() {
     clearInterval(this.event.interval);
     this.event.countDown = '00:00'
   }
 
+  //start timer functionaity
   startTimer(duration, event) {
+
     var timer = duration, minutes, seconds;
 
     event.interval = setInterval(function () {
-      timerfunction()
-    }, 1000);
-
-
-    //time function
-    function timerfunction() {
-
       var min = timer / 60;
       var sec = timer % 60;
       minutes = parseInt(min.toString(), 10);
@@ -60,15 +57,15 @@ export class HomePage {
         timer = duration;
 
         if (event.countDown === "00:00") {
-          clearInterval(event.interval);
-          alert('done!');
+          event.repetitions = event.repetitions - 1;
+
+          if (event.repetitions == 0) {
+            clearInterval(event.interval);
+            alert('done!');
+          }
         }
       }
-    }
-    //end time function
-
-
-
+    }, 1000);
   }
 
 }

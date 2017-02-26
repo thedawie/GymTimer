@@ -7,13 +7,22 @@
 <ion-content padding>
   <h2>Timer</h2>
   <ion-list>
-    <h4>set time</h4>
+    <h4>set workout time</h4>
     <ion-item>
       <ion-datetime displayFormat="mm:ss" pickerFormat="mm ss" [(ngModel)]="event.timeStarts"></ion-datetime>
     </ion-item>
 
-    <button ion-button  (click)="start(event)">Start</button>
+    <h4>set rest time</h4>
+    <ion-item>
+      <ion-datetime displayFormat="mm:ss" pickerFormat="mm ss" [(ngModel)]="event.restTime"></ion-datetime>
+    </ion-item>
+
+    <h4>set repetitions</h4>
+    <input type="text" [(ngModel)]="event.repetitions">
+
+
+    <button ion-button (click)="start(event)">Start</button>
     <button ion-button (click)="reset(event)">reset</button>
-    <div>{{event.countDown}}</div> 
+    <div>{{event.countDown}}</div>
   </ion-list>
 </ion-content>
