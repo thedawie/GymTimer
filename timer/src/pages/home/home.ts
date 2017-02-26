@@ -59,6 +59,9 @@ export class HomePage {
         if (event.countDown === "00:00") {
           event.repetitions = event.repetitions - 1;
 
+          
+
+
           if (event.repetitions == 0) {
             clearInterval(event.interval);
             alert('done!');

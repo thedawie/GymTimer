@@ -18,8 +18,9 @@
     </ion-item>
 
     <h4>set repetitions</h4>
-    <input type="text" [(ngModel)]="event.repetitions">
-
+    <ion-item>
+      <input type="text" [(ngModel)]="event.repetitions">
+    </ion-item>
 
     <button ion-button (click)="start(event)">Start</button>
     <button ion-button (click)="reset(event)">reset</button>
