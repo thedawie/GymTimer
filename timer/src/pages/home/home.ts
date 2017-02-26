@@ -12,10 +12,11 @@ export class HomePage {
   }
   public event = {
     timeStarts: '00:01:00',
-    countDown: '00:00'
+    countDown: '00:00',
+    interval: 1
   }
 
-  public interval;
+  
 
   start(event) {
     var fiveMinutes = 60 * 5
@@ -28,19 +29,23 @@ export class HomePage {
     this.startTimer(total, event)
   }
 
+
   reset() {
-    clearInterval(this.interval);
+    clearInterval(this.event.interval);
     this.event.countDown = '00:00'
   }
 
   startTimer(duration, event) {
     var timer = duration, minutes, seconds;
 
-   var interval = setInterval(function () {
+    event.interval = setInterval(function () {
       timerfunction()
     }, 1000);
 
+
+    //time function
     function timerfunction() {
+
       var min = timer / 60;
       var sec = timer % 60;
       minutes = parseInt(min.toString(), 10);
@@ -55,11 +60,14 @@ export class HomePage {
         timer = duration;
 
         if (event.countDown === "00:00") {
-          clearInterval(interval);
+          clearInterval(event.interval);
           alert('done!');
         }
       }
     }
+    //end time function
+
+
 
   }
 
